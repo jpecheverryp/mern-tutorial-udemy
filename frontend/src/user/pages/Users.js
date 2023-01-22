@@ -6,7 +6,7 @@ const Users = () => {
 
   const USERS = [{
     id: 'u1',
-    name: 'John',
+    name: 'John Smith',
     image: 'https://randomuser.me/api/portraits/men/75.jpg',
     places: 3
   }]
