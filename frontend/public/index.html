@@ -25,8 +25,13 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>MERN APP</title>
+    <script async>
+      window.initMap = function() {
+        console.log('Google Maps API Initialized');
+      }
+    </script>
     <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBMHwsyKY3fR2N8cj6b4FxbsqhD9zUKis">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBMHwsyKY3fR2N8cj6b4FxbsqhD9zUKis&callback=initMap">
 </script>
   </head>
   <body>
