@@ -11,3 +11,11 @@ Content-Type: application/json
     "lng": -74.0134541
   }
 }
+
+###
+
+GET http://localhost:5000/api/places/user/u2
+
+###
+
+GET http://localhost:5000/api/places/:id
