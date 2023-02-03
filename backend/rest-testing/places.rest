@@ -19,3 +19,7 @@ GET http://localhost:5000/api/places/user/u2
 ###
 
 GET http://localhost:5000/api/places/:id
+
+###
+
+GET http://localhost:5000/api/000000
