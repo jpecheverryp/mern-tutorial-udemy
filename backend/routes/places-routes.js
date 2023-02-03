@@ -22,15 +22,25 @@ router.get('/:pid', (req, res, next) => {
   const placeId = req.params.pid
   const place = DUMMY_PLACES.find(place => place.id === placeId)
 
+  if (!place) {
+    const error = new Error('Could not find a place for the provided id.')
+    error.code = 404
+    return next(error)
+  }
   res.json({place})
 })
 
 router.get('/user/:uid', (req, res, next) => {
 
   const userId = req.params.uid
-  const places = DUMMY_PLACES.find(place => place.creator === userId)
+  const place = DUMMY_PLACES.find(place => place.creator === userId)
+  if (!place) {
+    const error = new Error('Could not find a place for the provided user.')
+    error.code = 404
+    return next(error)
+  }
 
-  res.json(places)
+  res.json(place)
 })
 
 module.exports = router
