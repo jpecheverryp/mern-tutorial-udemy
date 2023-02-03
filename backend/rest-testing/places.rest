@@ -18,7 +18,17 @@ GET http://localhost:5000/api/places/user/u2
 
 ###
 
-GET http://localhost:5000/api/places/:id
+GET http://localhost:5000/api/places/p1
+
+###
+
+PATCH http://localhost:5000/api/places/p1
+Content-Type: application/json
+
+{
+  "title": "Empire State of Mind",
+  "description": "A pretty catchy song"
+} 
 
 ###
 
