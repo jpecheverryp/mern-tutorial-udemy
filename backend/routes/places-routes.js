@@ -1,48 +1,12 @@
 const express = require('express');
 
-const HttpError = require('../models/http-error');
+//Controllers
+const { getPlaceById, getPlaceByUserId } = require('../controllers/places-controllers');
 
 const router = express.Router();
 
-const DUMMY_PLACES = [
-  {
-    id: 'p1',
-    title: 'Empire State Building',
-    description: 'One of the most famous skyscrappers in the world.',
-    location: {
-      lat: 40.7484474,
-      lng: -73.9871516
-    },
-    address: '20 W 34th St, New York, NY 10001',
-    creator: 'u1'
-  }
-]
+router.get('/:pid', getPlaceById)
 
-//pid stands for place Id
-router.get('/:pid', (req, res, next) => {
-  
-  const placeId = req.params.pid
-  const place = DUMMY_PLACES.find(place => place.id === placeId)
-
-  if (!place) {
-    return next(
-      new HttpError('Could not find a place for the provided id.', 404)
-    )
-  }
-  res.json({place})
-})
-
-router.get('/user/:uid', (req, res, next) => {
-
-  const userId = req.params.uid
-  const place = DUMMY_PLACES.find(place => place.creator === userId)
-  if (!place) {
-    return next(
-      new HttpError('Could not find a place for the provided user.', 404)
-    )
-  }
-
-  res.json(place)
-})
+router.get('/user/:uid', getPlaceByUserId)
 
 module.exports = router
