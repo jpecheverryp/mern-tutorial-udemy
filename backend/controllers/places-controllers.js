@@ -40,5 +40,20 @@ const getPlaceByUserId = (req, res, next) => {
   res.json(place)
 }
 
+const createPlace = (req, res, next) => {
+  const {title, description, coordinates, address, creator} = req.body
+  const createdPlace = {
+    title, 
+    description,
+    location: coordinates,
+    address,
+    creator
+  }
+
+  DUMMY_PLACES.push(createdPlace)
+  res.status(201).json({createdPlace})
+}
+
 exports.getPlaceById = getPlaceById
 exports.getPlaceByUserId = getPlaceByUserId
+exports.createPlace = createPlace
