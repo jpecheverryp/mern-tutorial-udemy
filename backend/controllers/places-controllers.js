@@ -59,6 +59,7 @@ const createPlace = (req, res, next) => {
   if (!errors.isEmpty()) {
     return next(new HttpError('Invalid inputs given, please check your data', 422))
   }
+
   const {title, description, coordinates, address, creator} = req.body
   const createdPlace = {
     id: uuidv4(),
@@ -74,6 +75,11 @@ const createPlace = (req, res, next) => {
 }
 
 const updatePlace = (req, res, next) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return next(new HttpError('Invalid inputs given, please check your data', 422))
+  }
+  
   const {title, description} = req.body
   const placeId = req.params.pid
 
