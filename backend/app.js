@@ -34,7 +34,9 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(MONGO_URI)
   .then(() => {
-    app.listen(5000)
+    app.listen(5000, () => {
+      console.log('Server running in http://localhost:5000');
+    })
   })
   .catch(err => 
     console.error(err)
