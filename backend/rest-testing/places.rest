@@ -6,7 +6,7 @@ Content-Type: application/json
   "title": "Empire State Building",
   "description": "A very famous building in New York",
   "address": "20 W 34th St, New York, NY 10001",
-  "creator": "u2"
+  "creator": "63e0336f375361e0881048a0"
 }
 
 ### GET PLACE BY ID
