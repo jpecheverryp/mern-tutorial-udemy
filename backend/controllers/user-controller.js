@@ -31,6 +31,7 @@ const signup = async (req, res, next) => {
   } catch (err) {
     return next( new HttpError('Signing Up Failed. Please try again later.', 500) )
   }
+  
   if (existingUser) {
     return next( new HttpError('Email already registered', 422) )
   }
@@ -38,11 +39,11 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
-    image: 'https://randomuser.me/api/portraits/men/75.jpg',
     password,
-    places
+    places,
+    image: 'https://randomuser.me/api/portraits/men/75.jpg'
   })
-  
+
   try {
     await createdUser.save()
   } catch (err) {
@@ -52,15 +53,18 @@ const signup = async (req, res, next) => {
   res.status(201).json({user: createdUser.toObject({ getters: true })})
 }
 
-const login = (req, res, next) => {
+const login = async (req, res, next) => {
   const {email, password} = req.body
 
-  const identifiedUser = DUMMY_USERS.find(u => u.email === email)
-  if (!identifiedUser) {
-    return next(new HttpError('Could not identify user.', 401))
+  let user
+  try {
+    user = await User.findOne({ email: email })
+  } catch (err) {
+    return next( new HttpError('Log in Failed. Please try again later.', 500) )
   }
-  if (identifiedUser.password !== password) {
-    return next(new HttpError('Incorrect Password', 403))
+
+  if (!user || user.password !== password) {
+    return next( new HttpError('Invalid credentials. Please try again', 401) )
   }
 
   res.json({message: 'Logged In!!'})
