@@ -16,12 +16,12 @@ GET http://localhost:5000/api/places/63e00b50198ea02d2ae86596
 GET http://localhost:5000/api/places/user/u2
 
 ### UPDATE PLACE BY ID
-PATCH http://localhost:5000/api/places/p1
+PATCH http://localhost:5000/api/places/63e00b50198ea02d2ae86596
 Content-Type: application/json
 
 {
-  "title": "Empire State of Mind",
-  "description": "A pretty catchy song"
+  "title": "The Empire State Building",
+  "description": "A great building in NYC"
 } 
 
 ### DELETE PLACE BY ID
