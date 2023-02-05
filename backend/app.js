@@ -1,8 +1,14 @@
+require('dotenv').config();
+
 const express = require('express');
+const mongoose = require('mongoose');
+
 const HttpError = require('./models/http-error');
 
 const placesRoutes = require('./routes/places-routes');
 const userRoutes = require('./routes/users-routes');
+
+const MONGO_URI = process.env.MONGO_URI
 
 const app = express();
 
@@ -25,4 +31,11 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || 'An Error has ocurred on the server'})
 })
 
-app.listen(5000)
+mongoose
+  .connect(MONGO_URI)
+  .then(() => {
+    app.listen(5000)
+  })
+  .catch(err => 
+    console.error(err)
+  )
