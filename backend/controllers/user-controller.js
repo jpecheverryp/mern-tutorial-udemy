@@ -13,8 +13,14 @@ const DUMMY_USERS = [
   },
 ]
 
-const getUsers = (req, res, neaxt) => {
-  return res.json({ users: DUMMY_USERS })
+const getUsers = async (req, res, next) => {
+  let users
+  try {
+    users = await User.find({}, '-password')
+  } catch (err) {
+    return next( new HttpError('Fetching users failed. Please try again later', 500) )
+  }
+  res.json({users: users.map(user => user.toObject({getters: true}))})
 }
 
 const signup = async (req, res, next) => {
@@ -31,7 +37,7 @@ const signup = async (req, res, next) => {
   } catch (err) {
     return next( new HttpError('Signing Up Failed. Please try again later.', 500) )
   }
-  
+
   if (existingUser) {
     return next( new HttpError('Email already registered', 422) )
   }

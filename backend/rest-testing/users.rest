@@ -1,43 +1,22 @@
+### GET USERS
 GET http://localhost:5000/api/users
 
-###
-
+### SIGNUP
 POST http://localhost:5000/api/users/signup
 Content-Type: application/json
 
 {
-  "name": "Jane Doe",
-  "email": "test@test.com",
-  "password": "testing",
+  "name": "John Doe",
+  "email": "john@test.com",
+  "password": "coolPassword",
   "places": "p1"
 }
 
-###
-
+### LOGIN
 POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
-  "password": "testing"
-}
-
-###
-
-POST http://localhost:5000/api/users/login
-Content-Type: application/json
-
-{
-  "email": "test2@test.com",
-  "password": "wrongpassword"
-}
-
-###
-
-POST http://localhost:5000/api/users/login
-Content-Type: application/json
-
-{
-  "email": "wrong@email.com",
-  "password": "testing"
+  "email": "john@test.com",
+  "password": "coolPassword"
 }
