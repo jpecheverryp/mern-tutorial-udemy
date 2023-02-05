@@ -9,16 +9,13 @@ Content-Type: application/json
   "creator": "u2"
 }
 
-### 
+### GET PLACE BY ID
+GET http://localhost:5000/api/places/63e00b50198ea02d2ae86596
 
+### GET PLACE BY USER ID
 GET http://localhost:5000/api/places/user/u2
 
-### GET PLACE BY ID
-
-GET http://localhost:5000/api/places/:id
-
-###
-
+### UPDATE PLACE BY ID
 PATCH http://localhost:5000/api/places/p1
 Content-Type: application/json
 
@@ -27,10 +24,5 @@ Content-Type: application/json
   "description": "A pretty catchy song"
 } 
 
-###
-
+### DELETE PLACE BY ID
 DELETE http://localhost:5000/api/places/p1
-
-###
-
-GET http://localhost:5000/api/000000
