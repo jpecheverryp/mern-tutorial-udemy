@@ -6,11 +6,11 @@ Content-Type: application/json
   "title": "Empire State Building",
   "description": "A very famous building in New York",
   "address": "20 W 34th St, New York, NY 10001",
-  "creator": "63e0336f375361e0881048a0"
+  "creator": "63e03807730be881695bec17"
 }
 
 ### GET PLACE BY ID
-GET http://localhost:5000/api/places/63e00b50198ea02d2ae86596
+GET http://localhost:5000/api/places/63e0381b730be881695bec1b
 
 ### GET PLACE BY USER ID
 GET http://localhost:5000/api/places/user/u2
@@ -25,4 +25,4 @@ Content-Type: application/json
 } 
 
 ### DELETE PLACE BY ID
-DELETE http://localhost:5000/api/places/63e00b50198ea02d2ae86596
+DELETE http://localhost:5000/api/places/63e0381b730be881695bec1b
