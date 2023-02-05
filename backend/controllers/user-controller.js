@@ -20,7 +20,7 @@ const signup = async (req, res, next) => {
     return next(new HttpError('Invalid inputs given, please check your data', 422))
   }
 
-  const {name, email, password, places} = req.body
+  const {name, email, password} = req.body
 
   let existingUser
   try {
@@ -37,7 +37,7 @@ const signup = async (req, res, next) => {
     name,
     email,
     password,
-    places,
+    places: [],
     image: 'https://randomuser.me/api/portraits/men/75.jpg'
   })
 

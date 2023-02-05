@@ -9,7 +9,6 @@ Content-Type: application/json
   "name": "John Doe",
   "email": "john@test.com",
   "password": "coolPassword",
-  "places": "p1"
 }
 
 ### LOGIN
