@@ -25,4 +25,4 @@ Content-Type: application/json
 } 
 
 ### DELETE PLACE BY ID
-DELETE http://localhost:5000/api/places/p1
+DELETE http://localhost:5000/api/places/63e00b50198ea02d2ae86596
