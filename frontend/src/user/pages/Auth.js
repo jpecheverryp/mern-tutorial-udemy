@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import Button from '../../shared/components/FormElements/Button'
 import Input from '../../shared/components/FormElements/Input'
 import Card from '../../shared/components/UIElements/Card'
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner'
+import ErrorModal from '../../shared/components/UIElements/ErrorModal'
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../../shared/util/validators'
 
 import { useForm } from '../../shared/hooks/form-hook'
@@ -11,8 +13,9 @@ import './Auth.css'
 
 const Auth = () => {
   const auth = useContext(AuthContext)
-
-const [isLoginMode, setIsLoginMode] = useState(true)
+  const [isLoginMode, setIsLoginMode] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState()
 
   const [formState, inputHandler, setFormData] = useForm({
     email: {
@@ -52,6 +55,7 @@ const [isLoginMode, setIsLoginMode] = useState(true)
       // fetch('http://localhost:5000/api/users/login')
     } else {
       try {
+        setIsLoading(true)
         const response = await fetch('http://localhost:5000/api/users/signup', {
           method: 'POST',
           headers: {
@@ -66,16 +70,19 @@ const [isLoginMode, setIsLoginMode] = useState(true)
 
         const responseData = await response.json()
         console.log(responseData);
+        setIsLoading(false)
+        auth.login()
       } catch (err) {
         console.error(err);
+        setIsLoading(false)
+        setError(err.message || 'Something went wrong, please try again')
       }
     }
-
-    auth.login()
   }
 
   return (
-    <Card className='authentication'>  
+    <Card className='authentication'> 
+      {isLoading && <LoadingSpinner asOverlay />} 
       <h2>
         {isLoginMode ? 
           "Log In": 
