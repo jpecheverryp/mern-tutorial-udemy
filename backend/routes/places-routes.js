@@ -5,12 +5,19 @@ const { check } = require('express-validator');
 const { getPlaceById, getPlacesByUserId, createPlace, updatePlace, deletePlace } = require('../controllers/places-controllers');
 
 const fileUpload = require('../middleware/file-upload');
+const checkAuth = require('../middleware/check-auth');
 
 const router = express.Router();
 
 router.get('/:pid', getPlaceById)
 
 router.get('/user/:uid', getPlacesByUserId)
+
+// Public routes above
+
+router.use(checkAuth)
+
+// Private routes below
 
 router.post(
   '/', 
