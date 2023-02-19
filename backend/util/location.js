@@ -2,7 +2,7 @@ const { default: axios } = require("axios")
 
 const HttpError = require('../models/http-error');
 
-const API_KEY = 'AIzaSyCBMHwsyKY3fR2N8cj6b4FxbsqhD9zUKis' // Will reset and move to environment
+const API_KEY = process.env.GOOGLE_API_KEY
 
 const getCoordinatesForAddress = async (address) => {
 
