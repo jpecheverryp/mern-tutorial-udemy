@@ -89,7 +89,7 @@ const login = async (req, res, next) => {
   }
 
   if (!user) {
-    return next( new HttpError('Invalid e-mail. Please try again', 401) )
+    return next( new HttpError('Invalid e-mail. Please try again', 403) )
   }
 
   let isValidPassword = false
@@ -104,7 +104,7 @@ const login = async (req, res, next) => {
   }
 
   if (!isValidPassword) {
-    return next( new HttpError('Invalid password. Please try again', 401) )
+    return next( new HttpError('Invalid password. Please try again', 403) )
   }
 
   let token
