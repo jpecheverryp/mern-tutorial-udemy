@@ -51,7 +51,7 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.qa4yxkb.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`)
   .then(() => {
-    app.listen(5000, () => {
+    app.listen(process.env.PORT || 5000, () => {
       console.log('Server running in http://localhost:5000');
     })
   })
