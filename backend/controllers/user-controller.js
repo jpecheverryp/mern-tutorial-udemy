@@ -16,7 +16,6 @@ const getUsers = async (req, res, next) => {
 }
 
 const signup = async (req, res, next) => {
-  console.log('User go to signup route')
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     return next(new HttpError('Invalid inputs given, please check your data', 422))
