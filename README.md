@@ -61,7 +61,7 @@ npm run build
 
 The chosen stack for the app was the MERN stack that uses the popular technologies: 
 
-- MongoDB (add links to docs)
+- MongoDB
 - Express
 - React
 - Node
